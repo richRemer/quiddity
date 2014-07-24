@@ -1,0 +1,21 @@
+{
+  "name": "quiddity",
+  "version": "0.0.1",
+  "description": "Quid-based entity management",
+  "main": "quiddity.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "~1.21"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/richRemer/quiddity.git"
+  },
+  "author": "Richard Remer (reanjr@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/richRemer/quiddity/issues"
+  }
+}
