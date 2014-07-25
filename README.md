@@ -9,7 +9,7 @@ Quiddity is a module to help build a prototypal inheritance hierarchy.  This
 might be useful for modeling a well-defined domain, but is probably woefully
 insufficient for more complicated systems.
 
-=== Usage
+### Usage
 ````js
 var quidditize = require("quiddity").quidditize;
 
