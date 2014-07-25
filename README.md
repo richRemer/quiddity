@@ -14,7 +14,12 @@ insufficient for more complicated systems.
 var quidditize = require("quiddity").quidditize;
 
 // quidditize a new root object
-var Root = quidditize({name: "root", data: {a:1,b:2}, stuff: [3,6]);
+var Root = quidditize();
+
+// set some properties on the object
+Root.name = "root";
+Root.data = {a:1,b:2};
+Root.stuff = [3,6];
 
 // create a new root instance
 var thing = Root.create();
@@ -35,12 +40,15 @@ var Timed = Root.create(function(timed) {
 assert(Timed.create().created instanceof Date);
 
 // constructor should be used to extend or override member objects
-var Extended = Root.create({name: "extended"}, function(extended) {
+var Extended = Root.create(function(extended) {
+    // override name
+    this.name = "extended";
+
     // extend prototype data (or create new data)
     this.data = this.data ? Object.create(this.data) : {};
-
-    // extend prototype stuff
-    // quidditize works a bit different with lists
-    this.stuff = quidditize(this.stuff);
 });
+
+// can extend properties without a constructor
+var foo = Root.create({name: "foo"});
+assert(foo.name === "foo");
 ````
