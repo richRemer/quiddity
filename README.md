@@ -5,16 +5,17 @@ Quiddity
 
 What is Quiddity?
 -----------------
-Quiddity is a module to help build a prototypal inheritance hierarchy.  This
-might be useful for modeling a well-defined domain, but is probably woefully
-insufficient for more complicated systems.
+Quiddity is a module to help build a prototypal inheritance hierarchy.  The
+classical inheritance paradigm with the new keyword, Function.prototype, etc.
+are avoided.
 
 ### Usage
 ````js
-var quidditize = require("quiddity").quidditize;
+var quiddity = require("quiddity");
 
 // quidditize a new root object
-var Root = quidditize();
+var Root = {};
+quiddity(Root);
 
 // set some properties on the object
 Root.name = "root";
@@ -33,22 +34,13 @@ assert(Root.isPrototypeOf(thing));
 // instanceof won't work because quiddity does not use classical inheritance
 assert(!(thing instanceof Root));
 
-// ctor can be provided to initialize created instances
+// init can be provided to initialize created instances
 var Timed = Root.create(function(timed) {
     timed.created = new Date();
 });
 assert(Timed.create().created instanceof Date);
 
-// constructor should be used to extend or override member objects
-var Extended = Root.create(function(extended) {
-    // override name
-    this.name = "extended";
-
-    // extend prototype data (or create new data)
-    this.data = this.data ? Object.create(this.data) : {};
-});
-
-// can extend properties without a constructor
+// can extend simple properties without an init
 var foo = Root.create({name: "foo"});
 assert(foo.name === "foo");
 ````
