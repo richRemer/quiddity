@@ -29,5 +29,14 @@ describe("quiddity", function() {
             expect(obj.foo).to.be(undefined);
             expect(obj.create().foo).to.be(42);
         });
+
+        it("should be able to chain inits together", function() {
+            var fnA = function() {this.value += "A";},
+                fnB = function() {this.value += "B";},
+                fnC = function() {this.value += "C";},
+                obj = quiddity({value:""}, fnA);
+
+            expect(obj.create(fnB).create(fnC).create().value).to.be("ABC");
+        });
     });
 });
