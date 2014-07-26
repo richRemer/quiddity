@@ -7,7 +7,7 @@ What is Quiddity?
 -----------------
 Quiddity is a module to help build a prototypal inheritance hierarchy.  The
 classical inheritance paradigm with the `new` keyword, `Function.prototype`,
-etc. are avoided.
+etc. is avoided.
 
 ### Usage
 ````js
