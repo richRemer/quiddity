@@ -41,8 +41,9 @@ var Quiddity = {
  * @return {object}
  */
 function quiddity(obj, init) {
-    if (typeof obj !== "object")
-        throw new Error("invalid argument; expected object");
+    if (typeof obj !== "object" || obj instanceof Array) {
+        throw new Error("invalid argument");
+    }
 
     mix(obj, Quiddity);
     if (init) obj.init = init;

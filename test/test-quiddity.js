@@ -9,6 +9,12 @@ describe("quiddity", function() {
         expect(obj.init).to.be.a("function");
     });
 
+    it("should reject invalid arguments", function() {
+        expect(quiddity).withArgs(21120).to.throwError(new Error());
+        expect(quiddity).withArgs("foo").to.throwError(new Error());
+        expect(quiddity).withArgs([2,3]).to.throwError(new Error());
+    });
+
     describe("create", function() {
         it("should return a derivation of current prototype", function() {
             var obj = quiddity({}),
