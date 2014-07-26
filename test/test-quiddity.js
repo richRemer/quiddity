@@ -10,10 +10,18 @@ describe("quiddity", function() {
     });
 
     describe("create", function() {
-        it("should derive from the current prototype", function() {
+        it("should return a derivation of current prototype", function() {
             var obj = quiddity({}),
                 derivation = obj.create();
             expect(obj.isPrototypeOf(derivation));
+        });
+
+        it("should call prototype init", function() {
+            var init = function() {this.foo = 42;},
+                obj = quiddity({}, init);
+
+            expect(obj.foo).to.be(undefined);
+            expect(obj.create().foo).to.be(42);
         });
     });
 });

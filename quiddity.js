@@ -23,6 +23,9 @@ var Quiddity = {
         
         // set init
         if (init) obj.init = init;
+
+        // return result
+        return obj;
     },
     
     /**
@@ -32,15 +35,17 @@ var Quiddity = {
 }
 
 /**
- * Decorate an object with the Quiddity mixin.
+ * Decorate an object with the Quiddity mixin and optional init.
  * @param {object} obj
+ * @param {function} init
  * @return {object}
  */
-function quiddity(obj) {
+function quiddity(obj, init) {
     if (typeof obj !== "object")
         throw new Error("invalid argument; expected object");
 
     mix(obj, Quiddity);
+    if (init) obj.init = init;
     return obj;
 }
 
